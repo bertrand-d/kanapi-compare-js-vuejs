@@ -1,4 +1,4 @@
-let cart = JSON.parse(sessionStorage.getItem('cart'));
+let cart = JSON.parse(localStorage.getItem('cart'));
 
 //item card
 function displayCard(item) {
@@ -101,7 +101,7 @@ let deleteBtn = document.getElementsByClassName('deleteItem');
 
 Array.from(deleteBtn).forEach(button => {
     button.addEventListener('click', function() {
-        cart = JSON.parse(sessionStorage.getItem('cart'));
+        cart = JSON.parse(localStorage.getItem('cart'));
         let id = button.closest('article').getAttribute('data-id');
         let color = button.closest('article').getAttribute('data-color');
         let article = button.closest('article');
@@ -110,12 +110,12 @@ Array.from(deleteBtn).forEach(button => {
             if( id === cart[i].id && color === cart[i].color) {
                 cart.splice(i, 1);
                 article.parentElement.removeChild(article);
-                sessionStorage.setItem('cart', JSON.stringify(cart));
+                localStorage.setItem('cart', JSON.stringify(cart));
                 displayTotal(cart);
                 console.log('sofa supprimé', cart);
             }
             if(cart.length === 0) {
-                sessionStorage.clear()
+                localStorage.clear()
             }
         }
     })
@@ -135,7 +135,7 @@ Array.from(itemQuantity).forEach(quantity => {
             if(id === cart[i].id && color === cart[i].color) {
                 cart[i].quantity = inputQuantity;
                 let originPrice = cart[i].price;
-                sessionStorage.setItem('cart', JSON.stringify(cart)); 
+                localStorage.setItem('cart', JSON.stringify(cart)); 
                 displayTotal(cart);
                 price.innerText = parseInt(originPrice) * parseInt(inputQuantity) + " €";
             }

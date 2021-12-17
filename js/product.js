@@ -59,13 +59,13 @@ addButton.addEventListener('click', e => {
   let isPresent = false;
   let isNewColor = false;
 
-  if(sessionStorage.getItem('cart') === null) {
+  if(localStorage.getItem('cart') === null) {
     cart.push(sofa)
     console.log('nouveau sofa local storage vide')
   } 
   
   else {
-    cart = JSON.parse(sessionStorage.getItem('cart'));
+    cart = JSON.parse(localStorage.getItem('cart'));
 
     for(let i = 0; i < cart.length; i++) {
       if (sofa.id === cart[i].id && sofa.color === cart[i].color && isNewColor === false) {
@@ -88,7 +88,7 @@ addButton.addEventListener('click', e => {
     }
   }
 
-  sessionStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
   setTimeout(function(){ 
     window.location.replace("cart.html");
   }, 1000);
