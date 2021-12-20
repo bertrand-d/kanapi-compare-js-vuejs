@@ -28,4 +28,34 @@
 </script>
 
 <style lang ="scss">
+footer {
+	color: var(--footer-text-color);
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+}
+footer .footerMain,
+footer .footerSecondary {
+	width: 100%;
+}
+
+/*footerMain*/
+.footerMain {
+	background-color: var(--footer-main-color);
+	padding: 50px 0;
+}
+.footerMain .limitedWidthBlock {
+	display: flex;
+	justify-content: space-between;
+}
+.footerMain .limitedWidthBlock div {
+	display: flex;
+	align-items: center;
+}
+
+/*footerSecondary*/
+.footerSecondary {
+	background-color: var(--footer-secondary-color);
+	padding: 25px 0;
+}
 </style>
