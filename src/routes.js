@@ -1,6 +1,7 @@
 import Vue from 'vue' 
 import Router from 'vue-router' 
 import Homepage from './views/Homepage'
+import Product from './views/Product'
 
 Vue.use(Router)
 
@@ -12,7 +13,8 @@ export default new Router ({
             component: Homepage
         },
         {
-            path: '/product'
+            path: '/product',
+            component: Product
         }
     ]
 })
