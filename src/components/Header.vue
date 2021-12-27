@@ -14,14 +14,14 @@
         </div>
         <div class="limitedWidthBlockContainer menu">
         <div class="limitedWidthBlock">
-            <a href="index.html">
-            <img class="logo" src="../images/logo.png" alt="Logo de l'entreprise">
-            </a>
+            <router-link to="/" exact>
+                <img class="logo" src="../images/logo.png" alt="Logo de l'entreprise">
+            </router-link>
             <nav>
             <ul>
-                <a href="index.html">
-                <li>Accueil</li>
-                </a>
+                <router-link to="/" exact>
+                    <li>Accueil</li>
+                </router-link>
                 <a href="cart.html">
                 <li>Panier</li>
                 </a>
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+// import router from "../routes.js";
+
 export default {
   name: 'Header'
 }
