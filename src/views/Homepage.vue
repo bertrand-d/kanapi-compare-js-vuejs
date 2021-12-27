@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Header/>
         <main class="limitedWidthBlockContainer">
             <div class="limitedWidthBlock">
                 <div class="titles">
@@ -18,20 +17,12 @@
                 </section>
             </div>
         </main>
-        <Footer/>
     </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
-
 export default {
-  name: 'Homepage',
-  components: {
-    Header,
-    Footer
-  }
+  name: 'Homepage'
 }
 </script>
 
