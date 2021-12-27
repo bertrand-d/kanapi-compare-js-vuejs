@@ -29,7 +29,7 @@
                 <label for="color-select">Choisir une couleur :</label>
                 <select name="color-select" id="colors">
                   <option value="">--SVP, choisissez une couleur --</option>
-                  <option value ="vert" v-for="color in sofaColor" :key=color.id >{{color}}</option>
+                  <option :value ="color" v-for="color in sofaColor" :key=color.id >{{color}}</option>
                 </select>
               </div>
 
@@ -40,7 +40,7 @@
             </div>
 
             <div class="item__content__addButton">
-              <button id="addToCart">Ajouter au panier</button>
+              <button id="addToCart" v-on:click="addToCart">Ajouter au panier</button>
             </div>
 
           </div>
@@ -59,6 +59,7 @@ export default {
       return {
           sofa : {},
           sofaColor: [],
+          cart: [],
           apiError : false
       }
   },
@@ -67,6 +68,57 @@ export default {
         const param = window.location.search;
         const id = param.replace('?id=', '');
         return id
+      },
+      addToCart: function() {
+        let color = document.getElementById('colors').value;
+        let quantity = document.getElementById('quantity').value;
+          
+        let product = {
+        id : this.getProductId(),
+        name : this.sofa.name,
+        price: this.sofa.price,
+        imageUrl : this.sofa.imageUrl,
+        description : this.sofa.description,
+        color : color,
+        quantity : quantity
+        };
+            
+        let isPresent = false;
+        let isNewColor = false;
+
+        if(localStorage.getItem('cart') === null) {
+            this.cart.push(product)
+            console.log('nouveau sofa local storage vide')
+        } 
+  
+        else {
+            this.cart = JSON.parse(localStorage.getItem('cart'));
+
+            for(let i = 0; i < this.cart.length; i++) {
+                if (this.product.id === this.cart[i].id && this.product.color === this.cart[i].color && this.isNewColor === false) {
+                    isPresent = true;
+                    console.log('sofa déjà existant');
+                    this.cart[i].quantity = parseInt(quantity) + parseInt(this.cart[i].quantity);
+                } 
+
+                if (this.product.id === this.cart[i].id && this.product.color != this.cart[i].color && isNewColor === true) {
+                    isNewColor = true;
+                    isPresent = true;
+                    this.cart.push(this.product)
+                    console.log('sofa avec couleur différente')
+                }
+            }
+
+            if(isPresent === false) {
+            this.cart.push(this.product)
+            console.log('nouveau sofa local storage déjà rempli')
+            }
+        }
+
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        setTimeout(function(){ 
+            window.location.replace("cart.html");
+        }, 1000);
       }
   },
   mounted(){
