@@ -22,9 +22,9 @@
                 <router-link to="/" exact>
                     <li>Accueil</li>
                 </router-link>
-                <a href="cart.html">
-                <li>Panier</li>
-                </a>
+                <router-link to="/cart" exact>
+                    <li>Panier</li>
+                </router-link>>
             </ul>
             </nav>
         </div>
