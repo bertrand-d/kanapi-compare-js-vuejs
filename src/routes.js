@@ -11,5 +11,8 @@ export default new Router ({
             path: '/', 
             component: Homepage
         },
+        {
+            path: '/product'
+        }
     ]
 })
