@@ -93,7 +93,6 @@ export default {
 	color: var(--text-color);
 }
 .menu nav ul li:hover {
-	font-weight: 600;
 	color: #3498db !important;
 }
 
