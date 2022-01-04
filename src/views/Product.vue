@@ -95,18 +95,11 @@ export default {
             this.cart = JSON.parse(localStorage.getItem('cart'));
 
             for(let i = 0; i < this.cart.length; i++) {
-                if (product.id === this.cart[i].id && product.color === this.cart[i].color && this.isNewColor === false) {
+                if (product.id === this.cart[i].id && product.color === this.cart[i].color && isNewColor === false) {
                     isPresent = true;
                     console.log('sofa déjà existant');
                     this.cart[i].quantity = parseInt(quantity) + parseInt(this.cart[i].quantity);
                 } 
-
-                if (product.id === this.cart[i].id && product.color != this.cart[i].color && isNewColor === true) {
-                    isNewColor = true;
-                    isPresent = true;
-                    this.cart.push(product)
-                    console.log('sofa avec couleur différente')
-                }
             }
 
             if(isPresent === false) {
@@ -116,9 +109,6 @@ export default {
         }
 
         localStorage.setItem('cart', JSON.stringify(this.cart));
-        setTimeout(function(){ 
-            window.location.replace("cart.html");
-        }, 1000);
       }
   },
   mounted(){
@@ -127,7 +117,6 @@ export default {
       .then(response => {
           this.sofa = response.data;
           this.sofaColor = response.data.colors;
-          console.log(this.sofaColor)
       })
       .catch(error => {
           this.apiError = true;
