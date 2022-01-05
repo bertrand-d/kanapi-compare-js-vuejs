@@ -99,7 +99,7 @@ export default {
                     isPresent = true;
                     console.log('sofa déjà existant');
                     this.cart[i].quantity = parseInt(quantity) + parseInt(this.cart[i].quantity);
-                } 
+                }
             }
 
             if(isPresent === false) {
