@@ -1,4 +1,5 @@
-# kanapi
+# kanapi compare js / vue js
+Micro projet dont le but était de recevoir les données fournies par l'api et de générer l'affichage front. Ce projet a d'abord été réalisé en JS pur, puis vue.js y a été ajouté afin de pouvoir faire un comparatif entre les deux méthodes
 
 ## Project setup
 ```
@@ -9,16 +10,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
